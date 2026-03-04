@@ -1,0 +1,328 @@
+/* Variáveis de Cores e Estilos */
+:root {
+    --pink-primary: #ff6b9e;
+    --pink-light: #ffe6f0;
+    --pink-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    --text-dark: #555;
+    --text-light: #888;
+    --bg-color: #fffafb;
+    --font-title: 'Dancing Script', cursive;
+    --font-text: 'Quicksand', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animação de Corações Flutuantes no Fundo */
+.bg-hearts {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.bg-heart {
+    position: absolute;
+    color: #ffd1dc;
+    font-size: 20px;
+    opacity: 0.5;
+    animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+}
+
+section {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1, h2, .cursive-text {
+    font-family: var(--font-title);
+    color: var(--pink-primary);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hero .heart-icon {
+    font-size: 50px;
+    color: var(--pink-primary);
+    animation: pulse 1.5s infinite;
+    margin-bottom: 20px;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    background: var(--pink-gradient);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+}
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+.btn {
+    background: var(--pink-gradient);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(255, 107, 158, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(255, 107, 158, 0.4);
+}
+
+/* Seção de Contadores */
+.section-header { margin-bottom: 40px; }
+.section-header h2 { font-size: 3rem; margin-bottom: 10px; }
+.counters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+.counter-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 192, 203, 0.2);
+    transition: transform 0.3s;
+}
+.counter-card:hover { transform: translateY(-5px); }
+.counter-icon {
+    width: 50px; height: 50px;
+    background: var(--pink-gradient);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 15px auto;
+}
+.counter-card h3 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--pink-primary);
+    margin-bottom: 10px;
+}
+.counter-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pink-primary);
+}
+.counter-card p { font-size: 0.9rem; color: var(--text-light); }
+
+/* Galeria Polaroid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s;
+}
+/* Efeito de Fita Adesiva */
+.polaroid::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 25px;
+    background: rgba(255, 192, 203, 0.6);
+    z-index: 2;
+    opacity: 0.8;
+}
+.polaroid:nth-child(odd) { transform: rotate(-3deg); }
+.polaroid:nth-child(even) { transform: rotate(3deg); }
+.polaroid:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+.polaroid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.polaroid .caption {
+    position: absolute;
+    bottom: 10px; width: 100%; left: 0;
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--pink-primary);
+}
+
+/* Músicas (ATUALIZADO PARA CLICAR) */
+.music-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.music-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 192, 203, 0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: left;
+    transition: transform 0.3s;
+    cursor: pointer; /* Adicionado o cursor de mãozinha */
+}
+.music-card:hover { transform: scale(1.02); }
+.music-icon {
+    width: 60px; height: 60px;
+    background: var(--pink-primary);
+    color: white;
+    border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+.music-info { flex-grow: 1; }
+.music-info h3 { font-family: var(--font-title); font-size: 1.8rem; color: var(--pink-primary); }
+.music-info span { font-size: 0.9rem; color: var(--text-light); display: block; margin-bottom: 10px; }
+.lyrics { font-style: italic; color: var(--text-dark); position: relative; padding-left: 15px; border-left: 3px solid var(--pink-light); }
+.play-btn {
+    background: none; border: none;
+    color: var(--pink-primary);
+    font-size: 1rem; font-weight: bold;
+    cursor: pointer; text-decoration: none;
+    display: flex; align-items: center; gap: 5px;
+}
+
+/* Carta de Amor */
+.letter-container {
+    background: #fff;
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(255, 107, 158, 0.15);
+    border: 2px solid var(--pink-light);
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.letter-container::before {
+    content: '\f004'; font-family: 'FontAwesome';
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+    background: white; padding: 0 10px;
+    color: var(--pink-primary); font-size: 24px;
+}
+.letter-content { font-size: 1.1rem; line-height: 1.8; text-align: justify; }
+.letter-content .greeting { font-family: var(--font-title); font-size: 2rem; color: var(--pink-primary); display: block; margin-bottom: 20px; text-align: center; }
+.letter-content .signature { font-family: var(--font-title); font-size: 2rem; color: var(--pink-primary); display: block; margin-top: 30px; text-align: right; }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-top: 1px solid var(--pink-light);
+}
+footer p { font-size: 1.1rem; }
+footer .infinity { font-family: var(--font-title); font-size: 2rem; color: var(--pink-primary); display: block; margin-top: 10px; }
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .letter-container { padding: 30px 20px; }
+}
+
+/* Modal (Janela Flutuante) do Spotify (NOVIDADE) */
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.close-modal {
+    position: absolute;
+    top: 15px; right: 15px;
+    width: 35px; height: 35px;
+    background: var(--pink-light);
+    color: var(--pink-primary);
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-modal:hover { background: var(--pink-primary); color: white; }
+.modal-icon {
+    width: 70px; height: 70px;
+    background: var(--pink-gradient);
+    color: white;
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 15px auto;
+}
+.modal-content h3 { font-size: 2.5rem; margin-bottom: 5px; }
+.modal-artist { color: var(--pink-primary); font-size: 1.2rem; display: block; margin-bottom: 20px; }
+.spotify-embed-container { border-radius: 12px; overflow: hidden; margin-bottom: 15px; }
+.modal-footer { font-size: 0.9rem; color: var(--text-light); }
